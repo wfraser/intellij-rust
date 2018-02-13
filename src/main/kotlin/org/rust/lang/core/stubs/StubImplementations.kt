@@ -33,7 +33,7 @@ class RsFileStub : PsiFileStubImpl<RsFile> {
 
     object Type : IStubFileElementType<RsFileStub>(RsLanguage) {
         // Bump this number if Stub structure changes
-        override fun getStubVersion(): Int = 121
+        override fun getStubVersion(): Int = 122
 
         override fun getBuilder(): StubBuilder = object : DefaultStubBuilder() {
             override fun createStubForFile(file: PsiFile): StubElement<*> = RsFileStub(file as RsFile)
@@ -111,6 +111,8 @@ fun factory(name: String): RsStubElementType<*, *> = when (name) {
     "TUPLE_TYPE" -> RsPlaceholderStub.Type("TUPLE_TYPE", ::RsTupleTypeImpl)
     "BASE_TYPE" -> RsBaseTypeStub.Type
     "FOR_IN_TYPE" -> RsPlaceholderStub.Type("FOR_IN_TYPE", ::RsForInTypeImpl)
+    "IMPLICIT_DYN_TRAIT_TYPE" -> RsPlaceholderStub.Type("IMPLICIT_DYN_TRAIT_TYPE", ::RsImplTraitTypeImpl)
+    "EXPLICIT_DYN_TRAIT_TYPE" -> RsPlaceholderStub.Type("EXPLICIT_DYN_TRAIT_TYPE", ::RsImplTraitTypeImpl)
     "IMPL_TRAIT_TYPE" -> RsPlaceholderStub.Type("IMPL_TRAIT_TYPE", ::RsImplTraitTypeImpl)
 
     "VALUE_PARAMETER_LIST" -> RsPlaceholderStub.Type("VALUE_PARAMETER_LIST", ::RsValueParameterListImpl)
