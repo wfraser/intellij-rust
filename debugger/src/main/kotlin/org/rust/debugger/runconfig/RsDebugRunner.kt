@@ -154,7 +154,7 @@ private fun buildProjectAndGetBinaryArtifactPath(project: Project, command: Carg
                                     || kind == TargetKind.TEST
                                     || (kind == TargetKind.LIB && profile.test)
                             }
-                            .flatMap { it.filenames.filter { !it.endsWith(".dSYM") } } // FIXME: correctly launch debug binaries for macos
+                            .flatMap { it.filenames.filter { !it.endsWith(".dSYM") && !it.endsWith(".pdb") } } // FIXME: correctly launch debug binaries for macos
                     }
 
                     override fun onSuccess() {
